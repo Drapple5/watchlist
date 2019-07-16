@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -8,16 +9,21 @@
 </head>
 <body>
     {% if name == 'cd' %}
-    <h2>{{name|upper}}'s watchlist</h2>
+    <h2>
+        <img src="{{url_for('static',filename='image/avatar.png')}}" alt="avatar" class="avatar">
+        {{name|upper}}'s watchlist
+    </h2>
     <p>{{movies|length}}Titles</p>
     {% else %}
     <p>你不是本清单的拥有者</p>
     {%endif%}
-    <ul>
+    <ul class="movie-list">
     {%for movie in movies%}
     <li>{{movie.title}}---{{movie.year}}</li>
     {%endfor%}
     </ul>
+    <img src="{{url_for('static',filename='image/totoro.gif')}}" alt="totoro" class="totoro">
+
     <footer>
         <small>&copy;2018<a href="http://helloflask.com/tutorial">HelloFlask</a></small>
     </footer>
